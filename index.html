@@ -7,6 +7,297 @@
     <link rel="stylesheet" href="./style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
+<style>
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and general font settings */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Header styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar a:hover, .navbar .active {
+    color: #f4f4f9;
+}
+
+/* Home Section */
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #3498db;
+    color: #fff;
+    flex-direction: column;
+    text-align: center;
+}
+
+.home .txt-animate h3 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.home .btn-box {
+    margin-top: 20px;
+}
+
+.home .btn {
+    background-color: #fff;
+    color: #333;
+    padding: 12px 25px;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.home .social-page a {
+    color: #fff;
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.home .social-page a:hover {
+    color: #3498db;
+}
+
+/* About Section */
+.about {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.about h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about .profile-image {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.about .profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #3498db;
+}
+
+.about .profile-image .circle-spin {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.about-content h3 {
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.about .btn-box .btn {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Skills Section */
+.skills {
+    padding: 50px 20px;
+    background-color: #ecf0f1;
+}
+
+.skills h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.skills ul {
+    list-style-type: none;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.skills ul li {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Projects Section */
+.projects {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.projects h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.project-box {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-box h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.project-box p {
+    font-size: 18px;
+}
+
+.project-box ul {
+    margin-top: 10px;
+}
+
+.project-box ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Education Section */
+.education {
+    padding: 60px 20px;
+    background-color: #ecf0f1;
+}
+
+.education h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.education-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.education-column {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.education-box a {
+    font-size: 20px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.education-box a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Section */
+.contact {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.contact form input, .contact form textarea {
+    width: 80%;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.contact form button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact form button:hover {
+    background-color: #2980b9;
+}
+
+
+</style>
 <body>
 
     <!-- header design -->
