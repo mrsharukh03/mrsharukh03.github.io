@@ -1,308 +1,1029 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad Sharukh - Portfolio</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Mohammad Sharukh - Java Backend Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
-
 <style>
-/* Reset some default styles */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --text-light: #7f8c8d;
+    --white: #fff;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-/* Body and general font settings */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-color);
+    overflow-x: hidden;
 }
 
 /* Header styles */
 .header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+    background-color: rgba(44, 62, 80, 0.95);
+    color: var(--white);
+    padding: 1.5rem 9%;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    padding: 1rem 9%;
+    background-color: rgba(44, 62, 80, 0.98);
 }
 
 .header .logo {
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+#menu-icon {
+    font-size: 2.5rem;
+    color: var(--white);
+    cursor: pointer;
+    display: none;
 }
 
 .navbar {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding-top: 10px;
+    gap: 2rem;
 }
 
 .navbar a {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
 }
 
-.navbar a:hover, .navbar .active {
-    color: #f4f4f9;
+.navbar a:hover,
+.navbar .active {
+    color: var(--primary-color);
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    bottom: -5px;
+    left: 0;
+    transition: var(--transition);
+}
+
+.navbar a:hover::after,
+.navbar .active::after {
+    width: 100%;
+}
+
+/* Section common styles */
+section {
+    padding: 8rem 9% 4rem;
+    min-height: 100vh;
+}
+
+.heading {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+.heading span {
+    color: var(--primary-color);
+}
+
+.heading::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 4px;
+    background: var(--primary-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--primary-color);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    box-shadow: var(--shadow);
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.btn-box {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 /* Home Section */
 .home {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.home-content {
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.home-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.home-content h1 span {
+    color: var(--primary-color);
+}
+
+.txt-animate h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.txt-animate h3::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    animation: underline 2s infinite;
+}
+
+@keyframes underline {
+    0% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+    50% {
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+
+    51% {
+        transform-origin: left;
+    }
+
+    100% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+}
+
+.home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.social-page {
+    margin-top: 1rem;
+    position: relative;
+    left:4vw;
+}
+
+.social-page a {
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #3498db;
-    color: #fff;
-    flex-direction: column;
-    text-align: center;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0 0.5rem;
+    transition: var(--transition);
 }
 
-.home .txt-animate h3 {
-    font-size: 24px;
-    margin-top: 10px;
-}
-
-.home .btn-box {
-    margin-top: 20px;
-}
-
-.home .btn {
-    background-color: #fff;
-    color: #333;
-    padding: 12px 25px;
-    text-decoration: none;
-    margin: 5px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.home .social-page a {
-    color: #fff;
-    font-size: 30px;
-    margin: 0 10px;
-}
-
-.home .social-page a:hover {
-    color: #3498db;
+.social-page a:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
 }
 
 /* About Section */
 .about {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #fff;
+    background-color: var(--white);
 }
 
-.about h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5rem;
 }
 
-.about .profile-image {
+.profile-image {
+    flex: 1 1 35rem;
     position: relative;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
-.about .profile-image img {
-    width: 150px;
-    height: 150px;
+.profile-image img {
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    border: 4px solid #3498db;
+    object-fit: cover;
+    border: 10px solid var(--light-color);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
 }
 
-.about .profile-image .circle-spin {
+.profile-image:hover img {
+    transform: scale(1.05);
+}
+
+.circle-spin {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 30%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(0);
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
-    border: 3px solid #fff;
-    animation: spin 5s linear infinite;
+    border-top: 5px solid var(--primary-color);
+    border-bottom: 5px solid var(--primary-color);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    animation: spin 8s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
-.about-content h3 {
-    font-size: 28px;
-    margin-top: 20px;
+.about-text {
+    flex: 1 1 45rem;
 }
 
-.about-content p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-top: 10px;
+.about-text h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.about .btn-box .btn {
-    background-color: #3498db;
-    color: #fff;
+.about-text p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+.about-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    flex: 1 1 20rem;
+}
+
+.info-item h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.info-item span {
+    font-size: 1rem;
+    color: var(--text-light);
 }
 
 /* Skills Section */
 .skills {
-    padding: 50px 20px;
-    background-color: #ecf0f1;
+    background-color: var(--light-color);
 }
 
-.skills h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.skills-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.skills-title {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
     text-align: center;
 }
 
-.skills ul {
-    list-style-type: none;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0;
+.skill-category {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
 }
 
-.skills ul li {
-    font-size: 20px;
-    margin-bottom: 10px;
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.category-header i {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.category-header h4 {
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.8rem;
+}
+
+.professional-grid {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    transition: var(--transition);
+    cursor: default;
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+}
+
+.skill-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+    transition: var(--transition);
+}
+
+.skill-item:hover i {
+    color: var(--secondary-color);
+}
+
+.skill-item span {
+    font-size: 0.7rem;
+    text-align: center;
+    color: var(--text-color);
+    line-height: 1.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    }
+    
+    .professional-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+    
+    .skill-item i {
+        font-size: 1.3rem;
+    }
+    
+    .skill-item span {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        gap: 0.6rem;
+    }
+    
+    .professional-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    }
+    
+    .skill-item i {
+        font-size: 1.1rem;
+    }
+    
+    .skill-item span {
+        font-size: 0.6rem;
+    }
+    
+    .category-header h4 {
+        font-size: 1rem;
+    }
+}
+/* Experience Section */
+.experience {
+    background-color: var(--white);
+}
+
+.experience-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.experience-column {
+    flex: 1 1 40rem;
+}
+
+.experience-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--dark-color);
+}
+
+.experience-box {
+    position: relative;
+    border-left: 2px solid var(--primary-color);
+    padding-left: 2rem;
+}
+
+.experience-content {
+    position: relative;
+    padding: 2rem;
+    background: var(--light-color);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.experience-content::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    left: -3.1rem;
+    top: 3rem;
+}
+
+.experience-content .year {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-content .year i {
+    margin-right: 0.5rem;
+}
+
+.experience-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-content p {
+    font-size: 1.1rem;
+    color: var(--text-light);
 }
 
 /* Projects Section */
 .projects {
-    padding: 60px 20px;
-    background-color: #fff;
+    background-color: var(--light-color);
 }
 
-.projects h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    text-align: center;
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 3rem;
 }
 
 .project-box {
-    background-color: #3498db;
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
 }
 
-.project-box h3 {
-    font-size: 28px;
-    margin-bottom: 15px;
+.project-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.project-box p {
-    font-size: 18px;
+.project-img {
+    height: 200px;
+    overflow: hidden;
 }
 
-.project-box ul {
-    margin-top: 10px;
+.project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
 }
 
-.project-box ul li {
-    font-size: 16px;
-    margin-bottom: 10px;
+.project-box:hover .project-img img {
+    transform: scale(1.1);
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.project-content p.tech-stack {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.project-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.project-content ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.project-links a:hover {
+    background: var(--secondary-color);
+}
+
+.project-links a i {
+    margin-right: 0.5rem;
 }
 
 /* Education Section */
 .education {
-    padding: 60px 20px;
-    background-color: #ecf0f1;
+    background-color: var(--white);
 }
 
-.education h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.education-row {
+.education-container {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 3rem;
 }
 
 .education-column {
-    max-width: 800px;
-    margin: 0 auto;
+    flex: 1 1 40rem;
+}
+
+.education-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--dark-color);
 }
 
 .education-box {
-    background-color: #fff;
-    padding: 20px;
+    position: relative;
+    border-left: 2px solid var(--primary-color);
+    padding-left: 2rem;
+}
+
+.education-content {
+    position: relative;
+    padding: 2rem;
+    background: var(--light-color);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
 }
 
-.education-box a {
-    font-size: 20px;
-    color: #3498db;
+.education-content::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    left: -3.1rem;
+    top: 3rem;
+}
+
+.education-content .year {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.education-content .year i {
+    margin-right: 0.5rem;
+}
+
+.education-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.education-content a {
+    color: var(--primary-color);
     text-decoration: none;
+    transition: var(--transition);
 }
 
-.education-box a:hover {
+.education-content a:hover {
     text-decoration: underline;
+}
+
+.education-content p {
+    font-size: 1.1rem;
+    color: var(--text-light);
 }
 
 /* Contact Section */
 .contact {
-    padding: 60px 20px;
-    background-color: #fff;
-    text-align: center;
+    background-color: var(--light-color);
 }
 
-.contact h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
 }
 
-.contact p {
-    font-size: 18px;
-    margin-bottom: 30px;
+.contact-info {
+    flex: 1 1 30rem;
 }
 
-.contact form input, .contact form textarea {
-    width: 80%;
-    padding: 12px;
-    margin: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--dark-color);
 }
 
-.contact form button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 12px 20px;
+.contact-info p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-item i {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.contact-item div h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.contact-item div span {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.social-contact {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-contact a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.social-contact a:hover {
+    background: var(--dark-color);
+    transform: translateY(-5px);
+}
+
+.contact-form {
+    flex: 1 1 40rem;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.contact-form h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-box input,
+.input-box textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    background: var(--light-color);
     border: none;
     border-radius: 5px;
+    resize: none;
+}
+
+.input-box textarea {
+    height: 150px;
+}
+
+.input-box label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1rem;
+    color: var(--text-light);
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label,
+.input-box textarea:focus~label,
+.input-box textarea:valid~label {
+    top: -0.8rem;
+    left: 0;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    background: var(--white);
+    padding: 0 0.5rem;
+}
+
+.contact-form .btn {
     cursor: pointer;
+    border: none;
 }
 
-.contact form button:hover {
-    background-color: #2980b9;
+/* Footer */
+.footer {
+    background: var(--dark-color);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 9%;
 }
 
+.footer p {
+    font-size: 1.1rem;
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    html {
+        font-size: 95%;
+    }
+}
+
+@media (max-width: 991px) {
+    section {
+        padding: 8rem 4% 4rem;
+    }
+
+    .header {
+        padding: 1.5rem 4%;
+    }
+
+    .footer {
+        padding: 2rem 4%;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 4%;
+        background: var(--dark-color);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        z-index: 999;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .navbar.active {
+        left: 0;
+    }
+
+    .home-content h1 {
+        font-size: 3rem;
+    }
+
+    .txt-animate h3 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 90%;
+    }
+
+    .home-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .btn-box {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .profile-image img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .circle-spin {
+        width: 270px;
+        height: 270px;
+    }
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 85%;
+    }
+}
 
 </style>
+
 <body>
 
     <!-- header design -->
     <header class="header">
-        <a href="#" class="logo">Mohammad Sharukh</a>
+        <a href="#" class="logo">Mohammad <span>Sharukh</span></a>
 
         <div class='bx bx-menu' id="menu-icon"></div>
 
@@ -320,138 +1041,491 @@ body {
     <!-- Home Section Design -->
     <section class="home" id="home">
         <div class="home-content">
-            <h1>Hi, I Am <span>Mohammad Sharukh</span></h1>
+            <h1>Hi, I'm <span>Mohammad <h1 style="color: aliceblue;">Sharukh</h1></span></h1>
             <div class="txt-animate">
                 <h3>Java Backend Developer</h3>
             </div>
             <p>
-                Java Backend Developer with expertise in Spring Boot, REST APIs, and security implementations. Passionate about building scalable and efficient backend solutions with a focus on authentication, payments, and API integrations.
+                Specializing in Spring Boot, REST APIs, and secure backend systems. Passionate about building scalable
+                solutions with robust authentication, and efficient database management.
             </p>
             <div class="btn-box">
                 <a href="#contact" class="btn">Hire Me</a>
-                <a href="#contact" class="btn">Let's Talk</a>
+                <a href="#projects" class="btn">My Projects</a>
             </div>
         </div>
-
+        <span class="circle-spin" ></span>
         <div class="social-page">
-            <a href="https://github.com/yourgithub"><i class='bx bxl-github'></i></a>
-            <a href="https://www.linkedin.com/in/yourlinkedin/"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/mrsharukh03" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://www.linkedin.com/in/mr-sharukh03/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://twitter.com/yourtwitter" target="_blank"><i class='bx bxl-twitter'></i></a>
+            <a href="https://medium.com/yourmedium" target="_blank"><i class='bx bxl-medium'></i></a>
         </div>
-
-        <div class="home-img-hov"></div>
     </section>
 
     <!-- About Section Design -->
     <section class="about" id="about">
-        <h2 class="about-heading">About <span>Me</span></h2>
-
-        <div class="profile-image">
-            <img src="./Assest/Images/your-image.jpg" alt="Profile Image">
-            <span class="circle-spin"></span>
-        </div>
+        <h2 class="heading">About <span>Me</span></h2>
 
         <div class="about-content">
-            <h3>Java Backend Developer</h3>
-            <p>
-                A passionate Java Backend Developer with expertise in Java, Spring Boot, and building secure, scalable, and efficient backend systems. I have a deep understanding of REST APIs, security implementations like JWT, and various database systems. 
-            </p>
-            <div class="btn-box">
-                <a href="#contact" class="btn">Read More</a>
+            <div class="profile-image">
+                <img src="https://lh3.googleusercontent.com/a/ACg8ocLQ_-wOAqU7dXJXg4j-08QVkvlzvOYPALlUedJMjUetRZsy0jhY=s192-c-rg-br100"
+                    alt="Mohammad Sharukh">
+            </div>
+
+            <div class="about-text">
+                <h3>Backend Developer</h3>
+                <p>
+                    I'm a passionate Java Backend Developer with expertise in building robust, scalable, and secure
+                    backend systems. My focus is on creating efficient REST APIs, implementing authentication systems,
+                    and integrating payment solutions.
+                </p>
+                <p>
+                    With a strong foundation in Spring Boot and database management, I enjoy solving complex problems
+                    and optimizing system performance. I'm committed to writing clean, maintainable code and following
+                    best practices in software development.
+                </p>
+
+                <div class="about-info">
+                    <div class="info-item">
+                        <h4>Experience:</h4>
+                        <span>2+ Years</span>
+                    </div>
+                    <div class="info-item">
+                        <h4>Specialization:</h4>
+                        <span>Backend Development</span>
+                    </div>
+                    <div class="info-item">
+                        <h4>Email:</h4>
+                        <span>mrsharukh003@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <h4>Location:</h4>
+                        <span>New Delhi, India</span>
+                    </div>
+                </div>
+
+                <div class="btn-box">
+                    <a href="#contact" class="btn">Contact Me</a>
+                    <a href="#" class="btn">Download CV</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <h2 class="skills-heading">Skills & Technologies</h2>
-        <div class="skills-content">
-            <ul>
-                <li><strong>Programming Languages:</strong> Java, Dart</li>
-                <li><strong>Frameworks & Libraries:</strong> Spring Boot, Spring Framework, Hibernate, Spring Security, JWT</li>
-                <li><strong>Databases & Caching:</strong> MySQL, PostgreSQL, MongoDB, Redis</li>
-                <li><strong>Development Tools & IDEs:</strong> IntelliJ IDEA, Eclipse, VS Code</li>
-                <li><strong>DevOps & Cloud Technologies:</strong> Docker, Kafka, Git, GitHub</li>
-            </ul>
-        </div>
-    </section>
+   <!-- Skills Section -->
+<section class="skills" id="skills">
+    <h2 class="heading">My <span>Skills</span></h2>
 
-    <!-- Experience Section Design -->
-    <section class="experience" id="experience">
-        <h2 class="experience-heading">My <span>Professional Journey</span></h2>
-        <div class="experience-row">
-            <div class="experience-column">
-                <h3 class="title">Experience</h3>
-                
-                <div class="experience-box">
-                    <div class="experience-content">
-                        <div class="content"><i class='bx bx-calendar'></i> June 2023 – Present</div>
-                        <h3>Indira Gandhi National Open University - Bachelor of Computer Applications</h3>
+    <div class="skills-container">
+        <!-- Technical Skills Column -->
+        <div class="skills-column">
+            <h3 class="skills-title">Technical Skills</h3>
+            
+            <!-- Programming Languages -->
+            <div class="skill-category">
+                <div class="category-header">
+                    <i class="fas fa-code"></i>
+                    <h4>Languages</h4>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-java"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fa-brands fa-dart-lang"></i>
+                        <span>Dart</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Backend -->
+            <div class="skill-category">
+                <div class="category-header">
+                    <i class="fas fa-server"></i>
+                    <h4>Backend</h4>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-leaf"></i>
+                        <span>Spring Boot</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Spring Security</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-cloud"></i>
+                        <span>Spring Cloud</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Databases -->
+            <div class="skill-category">
+                <div class="category-header">
+                    <i class="fas fa-database"></i>
+                    <h4>Databases</h4>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-memory"></i>
+                        <span>Redis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Right Column -->
+        <div class="skills-column">
+            <!-- DevOps & Cloud -->
+            <div class="skill-category">
+                <div class="category-header">
+                    <i class="fas fa-cloud"></i>
+                    <h4>DevOps & Cloud</h4>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-docker"></i>
+                        <span>Docker</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-ship"></i>
+                        <span>Kubernetes</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-aws"></i>
+                        <span>AWS</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-code-branch"></i>
+                        <span>CI/CD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Frontend -->
+            <div class="skill-category">
+                <div class="category-header">
+                    <i class="fas fa-paint-brush"></i>
+                    <h4>Frontend</h4>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-bootstrap"></i>
+                        <span>Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- API & Protocols -->
+            <div class="skill-category">
+                <div class="category-header">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>API & Protocols</h4>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-server"></i>
+                        <span>REST</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>GraphQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>WebSocket</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professional Skills Column -->
+        <div class="skills-column">
+            <h3 class="skills-title">Professional Skills</h3>
+            <div class="skills-grid professional-grid">
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <span>Clean Code</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>System Design</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-bug"></i>
+                    <span>Debugging</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Problem Solving</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-users"></i>
+                    <span>Teamwork</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-comments"></i>
+                    <span>Communication</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Time Mgmt</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Creativity</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Experience Section Design -->
+    <section class="experience" id="experience">
+        <h2 class="heading">My <span>Experience</span></h2>
 
-                <!-- More experience sections here -->
+        <div class="experience-container">
+            <div class="experience-column">
+                <div class="experience-box">
+                    <div class="experience-content">
+                        <div class="year"><i class='bx bx-calendar'></i> June 2023 - Present</div>
+                        <h3>Backend Developer - Freelance</h3>
+                        <p>
+                            Developed and maintained backend systems for various clients, focusing on Spring Boot
+                            applications with secure authentication and payment integrations.
+                        </p>
+                    </div>
 
+                    <div class="experience-content">
+                        <div class="year"><i class='bx bx-calendar'></i> Jan 2022 - May 2023</div>
+                        <h3>Java Developer Intern - Tech Solutions Inc.</h3>
+                        <p>
+                            Contributed to the development of RESTful APIs and participated in code reviews. Gained
+                            experience in database optimization and performance tuning.
+                        </p>
+                    </div>
+
+                    <div class="experience-content">
+                        <div class="year"><i class='bx bx-calendar'></i> Aug 2021 - Dec 2021</div>
+                        <h3>Backend Trainee - Code Masters</h3>
+                        <p>
+                            Learned fundamentals of Java backend development, Spring Framework, and database management.
+                            Completed several small projects to demonstrate skills.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section class="projects" id="projects">
-        <h2 class="projects-heading">My <span>Projects</span></h2>
-        
-        <div class="project-box">
-            <h3>LibXpress</h3>
-            <p><strong>Tech Stack:</strong> Java, Spring Boot, MySQL, Swagger Open API, JPA, Spring Security, JWT, SendGrid Mail</p>
-            <ul>
-                <li><strong>Login & Authentication:</strong> Implemented JWT-based authentication with role-based access control, OTP verification via SendGrid API, and secure password management. Used DTO pattern for request/response validation.</li>
-                <li><strong>Book Operations:</strong> Enabled book search by title/description, hybrid recommendation system, book borrowing/returning with late fee calculations, and wallet-based transactions.</li>
-                <li><strong>Admin Operations:</strong> Designed REST APIs for book/user management, including CRUD operations, user list retrieval, and admin role assignments.</li>
-                <li><strong>Payments:</strong> Developed wallet system with deposit, balance retrieval, KYC verification, and transaction tracking.</li>
-                <li><strong>API Documentation & Testing:</strong> Integrated Swagger for API documentation and used Postman for endpoint validation.</li>
-                <li><strong>Security:</strong> Enforced Spring Security with JWT refresh tokens and expiration handling.</li>
-            </ul>
-        </div>
+        <h2 class="heading">My <span>Projects</span></h2>
 
-        <div class="project-box">
-            <h3>XPay</h3>
-            <p><strong>Tech Stack:</strong> Java, Spring Boot, MySQL</p>
-            <ul>
-                <li><strong>API Operations:</strong> Created APIs for wallet creation, transactions, balance retrieval, and client management.</li>
-                <li><strong>Admin Operations:</strong> Developed APIs for admin sign-up, logins, and client approval/blocking.</li>
-                <li><strong>Security:</strong> Implemented OTP verification and user authentication via JWT.</li>
-                <li><strong>API Documentation:</strong> Utilized OpenAPI 3.1 for comprehensive API documentation.</li>
-            </ul>
+        <div class="projects-container">
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="https://5.imimg.com/data5/CR/PA/VH/SELLER-7931413/library-management-system-500x500.PNG"
+                        alt="LibXpress">
+                </div>
+                <div class="project-content">
+                    <h3>LibXpress</h3>
+                    <p class="tech-stack">Java | Spring Boot | MySQL | JWT | Swagger | SendGrid</p>
+                    <ul>
+                        <li>Implemented JWT authentication with role-based access control</li>
+                        <li>Developed book borrowing system with late fee calculations</li>
+                        <li>Created wallet system for transactions with KYC verification</li>
+                        <li>Integrated Swagger for API documentation</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/mrsharukh03/libXpress" target="_blank"><i class='bx bxl-github'></i>
+                            Code</a>
+                        <a href="#" target="_blank"><i class='bx bx-link-external'></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+                        alt="XPay">
+                </div>
+                <div class="project-content">
+                    <h3>XPay</h3>
+                    <p class="tech-stack">Spring Boot | PostgreSQL | JWT | OAUth2</p>
+                    <p class="tech-stack">Swagger | Redis | Docker | </p>
+                    <ul>
+                        <li>Developed wallet system with transaction capabilities</li>
+                        <li>Implemented admin dashboard for client management</li>
+                        <li>Integrated JWT authentication with OTP verification</li>
+                        <li>Documented APIs using OpenAPI 3.1 specification</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/yourgithub/xpay" target="_blank"><i class='bx bxl-github'></i>
+                            Code</a>
+                        <a href="#" target="_blank"><i class='bx bx-link-external'></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                        alt="TaskMaster">
+                </div>
+                <div class="project-content">
+                    <h3>Real Chat</h3>
+                    <p class="tech-stack">Java | Spring Boot | MongoDB
+                    <p class="tech-stack">WebSocket | JWT</p>
+                    <ul>
+                        <li>Developed a task management API with user authentication</li>
+                        <li>Implemented CRUD operations for tasks and users</li>
+                        <li>Integrated JWT for secure API access</li>
+                        <li>Documented API endpoints using Swagger</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/yourgithub/taskmaster-api" target="_blank"><i
+                                class='bx bxl-github'></i> Code</a>
+                        <a href="#" target="_blank"><i class='bx bx-link-external'></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Education Section Design -->
+    <!-- Education Section -->
     <section class="education" id="education">
-        <h2 class="education-heading">My <span>Journey</span></h2>
-        <div class="education-row">
+        <h2 class="heading">My <span>Education</span></h2>
+
+        <div class="education-container">
             <div class="education-column">
-                <h3 class="title">Education</h3>
-                
                 <div class="education-box">
                     <div class="education-content">
-                        <div class="content"><i class='bx bx-calendar'></i> June 2023 – Present</div>
-                        <a href="https://ignou.ac.in">Bachelor of Computer Applications - Indira Gandhi National Open University</a>
-                        <p>Specialization in Computer Science</p>
+                        <div class="year"><i class='bx bx-calendar'></i> 2023 - Paresnt</div>
+                        <h3>Bachelor of Computer Applications</h3>
+                        <p>IGNOU, India</p>
                     </div>
                 </div>
-
-                <!-- Add other education details here -->
-
+            </div>
+            <div class="education-column">
+                <div class="education-box">
+                    <div class="education-content">
+                        <div class="year"><i class='bx bx-calendar'></i> 2022</div>
+                        <h3>Java Backend Development Certification</h3>
+                        <p>ABC Institute, India</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out for collaborations or inquiries!</p>
-        <!-- Contact Form can be added here -->
+        <h2 class="heading">Get in <span>Touch</span></h2>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>If you have any questions or would like to discuss a project, feel free to reach out!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class='bx bx-phone'></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <span>+91 9120401599</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bx-envelope'></i>
+                        <div>
+                            <h4>Email</h4>
+                            <span>mrsharukh003@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bx-map'></i>
+                        <div>
+                            <h4>Location</h4>
+                            <span>India</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-contact">
+                    <a href="https://github.com/mrsharukh03" target="_blank"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/in/mr-sharukh03/" target="_blank"><i
+                            class='bx bxl-linkedin'></i></a>
+                    <a href="https://x.com/mrsharukh03" target="_blank"><i class='bx bxl-twitter'></i></a>
+                    <a href="https://wa.me/919120401599" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Contact Me</h3>
+                <form action="#" method="POST">
+                    <div class="input-box">
+                        <input type="text" required>
+                        <label>Name</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <textarea required></textarea>
+                        <label>Message</label>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
     </section>
 
-    <script src="./script.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Mohammad Sharukh. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart"></i> by Mohammad Sharukh</p>
+    </footer>
+
+    <script>
+        // Script to handle the header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+
+        // Script to handle the mobile menu toggle
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.querySelector('.navbar');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
 </body>
+
 </html>
